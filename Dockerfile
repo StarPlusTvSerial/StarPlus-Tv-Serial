@@ -1,2 +1,6 @@
 FROM anasty17/mltb:latest
-RUN bash -c "$(curl -fsSl https://gist.githubusercontent.com/StarPlusTvSerial/576a7d2601a5d0cec26bfbeb29510282/raw/mirror.sh)"
+RUN git clone https://github.com/anasty17/mirror-leech-telegram-bot ap
+RUN cd ap && pip3 install --break-system-packages --no-cache-dir -r requirements.txt && pip3 install --break-system-packages yt-dlp==2023.10.13
+COPY . .
+RUN cp con* ap
+RUN cd ap && bash start.sh
